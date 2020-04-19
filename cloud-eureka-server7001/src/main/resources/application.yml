@@ -1,0 +1,16 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: cloud-eureka-service
+
+eureka:
+  instance:
+    hostname: localhost7001   #eureka服务端的实例名称
+  client:
+    register-with-eureka: false   #false表示不向注册中心注册自己
+    fetch-registry: false   #false表示自己端就是注册中心
+    service-url:
+      defaultZone: http://127.0.0.1:7002/eureka/
+
