@@ -3,6 +3,7 @@ package org.chenguoyu.payment.controller;
 import org.chenguoyu.model.Payment;
 import org.chenguoyu.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
+    @Value("${server.port}")
+    private String serverPort;
 
     @PostMapping("/add")
     public Payment addPayment(@RequestBody Payment payment) {
@@ -21,4 +24,10 @@ public class PaymentController {
     public Payment get(@PathVariable Long id) {
         return paymentService.getById(id);
     }
+
+    @GetMapping(value = "/lb")
+    public String getPaymentLB(){
+        return serverPort;
+    }
+
 }
