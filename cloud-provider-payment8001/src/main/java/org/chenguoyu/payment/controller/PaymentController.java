@@ -28,14 +28,15 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/lb")
-    public String getPaymentLB(){
+    public String getPaymentLB() {
         return serverPort;
     }
+
     @GetMapping("/feign/timeout")
-    public String paymentFeignTimeOut(){
+    public String paymentFeignTimeOut() {
         try {
             TimeUnit.SECONDS.sleep(3);
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         return serverPort;

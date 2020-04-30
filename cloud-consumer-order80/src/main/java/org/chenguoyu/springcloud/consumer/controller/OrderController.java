@@ -1,6 +1,7 @@
 package org.chenguoyu.springcloud.consumer.controller;
 
 import cn.hutool.core.collection.CollectionUtil;
+import org.chenguoyu.entity.Result;
 import org.chenguoyu.model.Payment;
 import org.chenguoyu.springcloud.lb.LoadBalance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,13 @@ public class OrderController {
     public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
 
     @GetMapping("/payment/create")
-    public Payment create(Payment payment) {
-
-        return restTemplate.postForObject(PAYMENT_URL + "/payment/add", payment, Payment.class);
+    public Result<Payment> create(Payment payment) {
+        return restTemplate.postForObject(PAYMENT_URL + "/payment/add", payment, Result.class);
     }
 
     @GetMapping("/payment/get/{id}")
-    public Payment getPayment(@PathVariable("id") Long id) {
-        return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, Payment.class);
+    public Result<Payment> getPayment(@PathVariable("id") Long id) {
+        return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, Result.class);
     }
 
     /**
