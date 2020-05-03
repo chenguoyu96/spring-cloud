@@ -1,8 +1,6 @@
 package org.chenguoyu.springcloud.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.chenguoyu.springcloud.service.PaymentHystrixService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +21,7 @@ public class OrderHystrixController {
         return paymentHystrixService.paymentInfo_OK(id);
     }
 
-//    未开启断路器
+    //    未开启断路器
     @GetMapping("/consumer/payment/hystrix/timeout/{id}")
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
         return paymentHystrixService.paymentInfo_TimeOut(id);
@@ -51,6 +49,7 @@ public class OrderHystrixController {
 
     /**
      * 下面是全局fallback方法
+     *
      * @return
      */
     public String payment_Global_FallbackMethod() {

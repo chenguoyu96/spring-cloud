@@ -41,6 +41,7 @@ public class OrderController {
 
     /**
      * 不使用Ribbon进行轮询算法 记得注释掉restTemplate上的@LoadBalanced
+     *
      * @return
      */
     @GetMapping("/payment/lb")

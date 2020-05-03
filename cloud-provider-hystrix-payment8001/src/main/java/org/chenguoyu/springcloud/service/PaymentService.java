@@ -60,7 +60,7 @@ public class PaymentService {
             throw new RuntimeException("******id 不能为负数");
         }
         String serialNumber = IdUtil.simpleUUID();
-        return Thread.currentThread().getName()+"\t"+ "调用成功，流水号：" + serialNumber;
+        return Thread.currentThread().getName() + "\t" + "调用成功，流水号：" + serialNumber;
 
     }
 

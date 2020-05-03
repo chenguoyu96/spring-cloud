@@ -33,24 +33,23 @@ public class FlowLimitController {
         log.info("testD 测试RT");
         return "----testD";
     }
+
     @GetMapping("/testE")
-    public String testE()
-    {
+    public String testE() {
         log.info("testE 测试异常数");
-        int age = 10/0;
+        int age = 10 / 0;
         return "------testE 测试异常数";
     }
 
     @GetMapping("/testHotKey")
-    @SentinelResource(value = "testHotKey",blockHandler = "deal_testHotKey")
-    public String testHotKey(@RequestParam(value = "p1",required = false) String p1,
-                             @RequestParam(value = "p2",required = false) String p2)
-    {
+    @SentinelResource(value = "testHotKey", blockHandler = "deal_testHotKey")
+    public String testHotKey(@RequestParam(value = "p1", required = false) String p1,
+                             @RequestParam(value = "p2", required = false) String p2) {
         //int age = 10/0;
         return "------testHotKey";
     }
-    public String deal_testHotKey (String p1, String p2, BlockException exception)
-    {
+
+    public String deal_testHotKey(String p1, String p2, BlockException exception) {
         return "------deal_testHotKey,o(╥﹏╥)o";  //sentinel系统默认的提示：Blocked by Sentinel (flow limiting)
     }
 

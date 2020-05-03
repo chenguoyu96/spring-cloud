@@ -1,7 +1,6 @@
 package org.chenguoyu.config;
 
 
-
 import org.chenguoyu.entity.Errors;
 import org.chenguoyu.entity.Result;
 import org.chenguoyu.exceptions.ApplicationException;

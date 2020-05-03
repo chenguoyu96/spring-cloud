@@ -11,7 +11,7 @@ spring:
           lower-case-service-id: true
       routes:
         - id: payment_routh # 全局唯一
-        #  uri: http://localhost:8001 # 静态路由
+          #  uri: http://localhost:8001 # 静态路由
           uri: lb://cloud-payment-service # 动态路由
           predicates:
             - Path=/payment/get/** # 记得添加空格

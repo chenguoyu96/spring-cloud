@@ -21,8 +21,9 @@ public class OrderFeignController {
     public Result getServicePort(@PathVariable Long id) {
         return paymentFeignService.get(id);
     }
+
     @GetMapping(value = "/payment/feign/timeout")
-    public String paymentFeignTimeOut(){
+    public String paymentFeignTimeOut() {
         //客户端默认等待1秒钟
         return paymentFeignService.paymentFeignTimeOut();
     }

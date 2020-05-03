@@ -14,8 +14,9 @@ public class ServerGatewayFilter implements GatewayFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         log.info("ServerGatewayFilter filter ");
-        return chain.filter( exchange );
+        return chain.filter(exchange);
     }
+
     @Override
     public int getOrder() {
         return 0;

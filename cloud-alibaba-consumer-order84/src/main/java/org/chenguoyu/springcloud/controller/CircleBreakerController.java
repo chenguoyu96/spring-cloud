@@ -20,8 +20,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @Slf4j
-public class CircleBreakerController
-{
+public class CircleBreakerController {
     public static final String SERVICE_URL = "http://nacos-payment-provider";
 
     @Resource
@@ -31,29 +30,30 @@ public class CircleBreakerController
     //@SentinelResource(value = "fallback") //没有配置
     //@SentinelResource(value = "fallback",fallback = "handlerFallback") //fallback只负责业务异常
     //@SentinelResource(value = "fallback",blockHandler = "blockHandler") //blockHandler只负责sentinel控制台配置违规
-    @SentinelResource(value = "fallback",fallback = "handlerFallback",blockHandler = "blockHandler",
+    @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler",
             exceptionsToIgnore = {IllegalArgumentException.class})
-    public Result<Payment> fallback(@PathVariable Long id)
-    {
-        Result<Payment> result = restTemplate.getForObject(SERVICE_URL + "/paymentSQL/"+id,Result.class,id);
+    public Result<Payment> fallback(@PathVariable Long id) {
+        Result<Payment> result = restTemplate.getForObject(SERVICE_URL + "/paymentSQL/" + id, Result.class, id);
 
         if (id == 4) {
-            throw new IllegalArgumentException ("IllegalArgumentException,非法参数异常....");
-        }else if (result.getData() == null) {
-            throw new NullPointerException ("NullPointerException,该ID没有对应记录,空指针异常");
+            throw new IllegalArgumentException("IllegalArgumentException,非法参数异常....");
+        } else if (result.getData() == null) {
+            throw new NullPointerException("NullPointerException,该ID没有对应记录,空指针异常");
         }
 
         return result;
     }
+
     //本例是fallback
-    public Result handlerFallback(@PathVariable  Long id,Throwable e) {
-        Payment payment = new Payment(id,"null");
-        return new Result<>(444,"兜底异常handlerFallback,exception内容  "+e.getMessage(),payment);
+    public Result handlerFallback(@PathVariable Long id, Throwable e) {
+        Payment payment = new Payment(id, "null");
+        return new Result<>(444, "兜底异常handlerFallback,exception内容  " + e.getMessage(), payment);
     }
+
     //本例是blockHandler
-    public Result blockHandler(@PathVariable  Long id,BlockException blockException) {
-        Payment payment = new Payment(id,"null");
-        return new Result<>(445,"blockHandler-sentinel限流,无此流水: blockException  "+blockException.getMessage(),payment);
+    public Result blockHandler(@PathVariable Long id, BlockException blockException) {
+        Payment payment = new Payment(id, "null");
+        return new Result<>(445, "blockHandler-sentinel限流,无此流水: blockException  " + blockException.getMessage(), payment);
     }
 
     //==================OpenFeign
@@ -61,8 +61,7 @@ public class CircleBreakerController
     private PaymentService paymentService;
 
     @GetMapping(value = "/consumer/paymentSQL/{id}")
-    public Result<Payment> paymentSQL(@PathVariable("id") Long id)
-    {
+    public Result<Payment> paymentSQL(@PathVariable("id") Long id) {
         return paymentService.paymentSQL(id);
     }
 }

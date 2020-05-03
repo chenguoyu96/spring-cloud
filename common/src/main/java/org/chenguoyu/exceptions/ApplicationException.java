@@ -2,7 +2,7 @@ package org.chenguoyu.exceptions;
 
 import org.chenguoyu.entity.Errors;
 
-public class ApplicationException extends RuntimeException{
+public class ApplicationException extends RuntimeException {
     /**
      * 自定义错误码
      */
