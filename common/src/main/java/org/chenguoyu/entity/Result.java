@@ -59,13 +59,20 @@ public class Result<T> {
         this.message = message;
     }
 
-    private Result(Integer code, boolean success, String message, T data) {
+
+    public Result(Integer code, String message, T data) {
         this.code = code;
         this.success = success;
         this.message = message;
         this.data = data;
     }
 
+    private Result(Integer code, boolean success, String message, T data) {
+        this.code = code;
+        this.success = success;
+        this.message = message;
+        this.data = data;
+    }
 
     public static <T> Result success(T data) {
         return new Result<T>(200, true, "执行成功", data);

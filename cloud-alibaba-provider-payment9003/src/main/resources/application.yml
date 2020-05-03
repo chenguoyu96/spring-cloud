@@ -1,13 +1,15 @@
 server:
-  port: 9001
+  port: 9003
 
 spring:
+  profiles:
+    active: common,mysql
   application:
     name: nacos-payment-provider
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 # 配置nacos地址
+        server-addr: localhost:8848 #配置Nacos地址
 
 management:
   endpoints:
