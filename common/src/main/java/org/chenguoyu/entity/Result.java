@@ -59,10 +59,16 @@ public class Result<T> {
         this.message = message;
     }
 
+    public Result(Integer code, String message) {
+        this.code = code;
+        this.success = true;
+        this.message = message;
+        this.data = null;
+    }
 
     public Result(Integer code, String message, T data) {
         this.code = code;
-        this.success = success;
+        this.success = true;
         this.message = message;
         this.data = data;
     }

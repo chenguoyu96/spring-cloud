@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.chenguoyu.springcloud.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="org.chenguoyu.springcloud.entity.Order">
+        <!--@mbg.generated-->
+        <!--@Table t_order-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="count" jdbcType="BIGINT" property="count"/>
+        <result column="money" jdbcType="BIGINT" property="money"/>
+        <result column="status" jdbcType="BIGINT" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, user_id, product_id, `count`, money, `status`
+    </sql>
+    <update id="updateStatus">
+        update t_order set status =1 where user_id =#{userId} and status=#{status};
+    </update>
+</mapper>
