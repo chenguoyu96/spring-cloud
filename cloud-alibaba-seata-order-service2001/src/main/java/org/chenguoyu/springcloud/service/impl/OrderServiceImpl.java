@@ -1,25 +1,25 @@
 package org.chenguoyu.springcloud.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.chenguoyu.springcloud.entity.Order;
 import org.chenguoyu.springcloud.mapper.OrderMapper;
 import org.chenguoyu.springcloud.service.AccountService;
 import org.chenguoyu.springcloud.service.OrderService;
 import org.chenguoyu.springcloud.service.StorageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Service
 @Slf4j
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
-    @Resource
+    @Autowired
     private OrderMapper orderMapper;
-    @Resource
+    @Autowired
     private AccountService accountService;
-    @Resource
+    @Autowired
     private StorageService storageService;
 
     /**
@@ -31,10 +31,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      * @param order 订单对象
      */
     @Override
-    ///@GlobalTransactional(name = "fsp-create-order", rollbackFor = Exception.class)
+//    @GlobalTransactional(name = "create-order", rollbackFor = Exception.class)
     public void create(Order order) {
         // 1 新建订单
         log.info("----->开始新建订单");
+        order.setStatus(0L);
         orderMapper.insert(order);
 
         // 2 扣减库存
@@ -49,7 +50,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
         // 4 修改订单状态,从0到1,1代表已完成
         log.info("----->修改订单状态开始");
-        orderMapper.updateStatus(order.getUserId(), 0);
+        orderMapper.updateStatus(order.getUserId(), 1);
 
         log.info("----->下订单结束了,O(∩_∩)O哈哈~");
     }

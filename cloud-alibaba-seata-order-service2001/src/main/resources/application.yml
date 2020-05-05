@@ -2,24 +2,27 @@ server:
   port: 2001
 
 spring:
+  profiles:
+    active: common
   application:
     name: seata-order-service
   cloud:
     alibaba:
       seata:
         # 自定义事务组名称需要与seata-server中的对应
-        tx-service-group: fsp_tx_group
+        tx-service-group: default
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
   datasource:
-    # 当前数据源操作类型
-    type: com.alibaba.druid.pool.DruidDataSource
-    # mysql驱动类
-    driver-class-name: org.gjt.mm.mysql.Driver
-    url: jdbc:mysql://localhost:3306/seata_order?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: BiGData922
+    url: jdbc:mysql://192.168.223.128:3306/seata_order?serverTimezone=Hongkong&characterEncoding=utf-8&useSSL=false
+    hikari:
+      maximum-pool-size: 10
+      connection-test-query: SELECT 1
+    type: com.zaxxer.hikari.HikariDataSource
 feign:
   hystrix:
     enabled: false
@@ -28,6 +31,27 @@ logging:
     io:
       seata: info
 
+seata:
+  application-id: ${spring.application.name}
+  enabled: true
+  tx-service-group: my_test_tx_group
+  enable-auto-data-source-proxy: true
+  config:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+      namespace:
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      username: "nacos"
+      password: "nacos"
+      namespace:
 
 
 

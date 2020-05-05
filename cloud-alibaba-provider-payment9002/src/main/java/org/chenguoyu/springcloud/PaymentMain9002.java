@@ -8,6 +8,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 public class PaymentMain9002 {
     public static void main(String[] args) {
-        SpringApplication.run(PaymentMain9001.class);
+        SpringApplication.run(PaymentMain9002.class);
     }
 }

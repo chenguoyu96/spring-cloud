@@ -1,7 +1,7 @@
 package org.chenguoyu.springcloud.service;
 
-import org.chenguoyu.springcloud.entity.Order;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.chenguoyu.springcloud.entity.Order;
 
 public interface OrderService extends IService<Order> {
 
