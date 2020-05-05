@@ -32,7 +32,11 @@ logging:
     io:
       seata: info
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 seata:
   application-id: ${spring.application.name}

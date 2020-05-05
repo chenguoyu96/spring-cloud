@@ -31,7 +31,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      * @param order 订单对象
      */
     @Override
-//    @GlobalTransactional(name = "create-order", rollbackFor = Exception.class)
+    @GlobalTransactional(name = "create-order", rollbackFor = Exception.class)
     public void create(Order order) {
         // 1 新建订单
         log.info("----->开始新建订单");

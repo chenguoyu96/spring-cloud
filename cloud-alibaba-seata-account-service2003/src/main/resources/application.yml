@@ -2,6 +2,8 @@ server:
   port: 2003
 
 spring:
+  profiles:
+    active: common
   application:
     name: seata-account-service
   datasource:
@@ -27,7 +29,11 @@ logging:
     io:
       seata: info
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 seata:
   application-id: ${spring.application.name}
   enabled: true

@@ -25,6 +25,5 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         log.info("----> account-service中扣减用户余额开始");
         accountMapper.decrease(userId, money);
         log.info("----> account-service中扣减用户余额开始");
-        throw new RuntimeException();
     }
 }

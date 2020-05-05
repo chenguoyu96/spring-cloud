@@ -34,7 +34,7 @@ public class Order {
      * 数量
      */
     @TableField(value = "count")
-    private Long count;
+    private Integer count;
 
     /**
      * 金额
