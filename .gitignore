@@ -29,3 +29,36 @@ build/
 
 ### VS Code ###
 .vscode/
+
+*.~$lock
+cloud-alibaba-config-nacos-client3377/src/test/
+cloud-alibaba-consumer-order83/src/test/
+cloud-alibaba-consumer-order84/src/test/
+cloud-alibaba-provider-payment9001/src/test/
+cloud-alibaba-provider-payment9002/src/test/
+cloud-alibaba-provider-payment9003/src/test/
+cloud-alibaba-provider-payment9004/src/test/
+cloud-alibaba-seata-account-service2003/src/test/
+cloud-alibaba-seata-order-service2001/src/test/
+cloud-alibaba-seata-storage-service2002/src/test/
+cloud-alibaba-sentinel-service8401/src/main/resources/org/
+cloud-alibaba-sentinel-service8401/src/test/
+cloud-config-center3344/src/test/
+cloud-config-client3355/src/test/
+cloud-config-client3366/src/test/
+cloud-consumer-feign-hystrix-order80/src/test/
+cloud-consumer-feign-order80/src/test/
+cloud-consumer-hystrix-dashboard9001/src/test/
+cloud-consumer-order80/src/test/
+cloud-eureka-server7001/src/test/
+cloud-eureka-server7002/src/test/
+cloud-gateway-gateway9527/src/test/
+cloud-provider-hystrix-payment8001/src/test/
+cloud-provider-payment8001/src/main/java/org/chenguoyu/payment/entity/
+cloud-provider-payment8001/src/test/
+cloud-provider-payment8002/src/main/java/org/chenguoyu/payment/entity/
+cloud-provider-payment8002/src/test/
+cloud-stream-rabbitmq-consumer8802/src/test/
+cloud-stream-rabbitmq-consumer8803/src/test/
+cloud-stream-rabbitmq-provider8801/src/test/
+common/src/test/
