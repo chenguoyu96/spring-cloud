@@ -1,7 +1,6 @@
 package org.chenguoyu.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 import lombok.Data;
 
 /**
@@ -15,32 +14,26 @@ import lombok.Data;
  * @Version 1.0
  */
 @Data
-@ApiModel(value = "Result", description = "返回结果封装")
 public class Result<T> {
     /**
      * 返回代码
      */
-    @ApiModelProperty(name = "code", value = "返回代码")
     private Integer code;
     /**
      * token
      */
-    @ApiModelProperty(name = "token", value = "token")
     private String token;
     /**
      * 是否成功
      */
-    @ApiModelProperty(name = "success", value = "是否成功")
     private boolean success;
     /**
      * 错误信息
      */
-    @ApiModelProperty(name = "message", value = "错误信息")
     private String message;
     /**
      * 返回数据
      */
-    @ApiModelProperty(name = "data", value = "返回数据")
     private T data;
 
     public Result() {
